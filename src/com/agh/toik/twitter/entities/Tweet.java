@@ -1,4 +1,4 @@
-package twitter.entities;
+package com.agh.toik.twitter.entities;
 
 import com.agh.toik.webservice.annotations.*;
 
