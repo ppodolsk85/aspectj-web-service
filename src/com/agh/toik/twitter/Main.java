@@ -1,16 +1,29 @@
 package com.agh.toik.twitter;
 
+import java.util.Collection;
 import java.util.Scanner;
+
+import com.agh.toik.twitter.entities.Tweet;
+import com.agh.toik.webservice.entities.IEntity;
 
 public class Main {
 	static Scanner s;
 
 	public static void listTweets() {
-
+		Collection<IEntity> tweets = Tweet.getAll();
+		if(tweets != null) {
+			System.out.println("No of tweets:" + tweets.size());
+			for(IEntity tweet : tweets) {
+				Tweet t = (Tweet) tweet;
+				System.out.println("Id: " + t.getIdStr() + " Message: " + t.getText());
+			}
+		} else {
+			System.out.println("No tweets, sorry :(");
+		}
+		System.out.println("\n");
 	}
 
 	public static void deleteTweet() {
-
 	}
 
 	public static void tweet() {
@@ -23,7 +36,7 @@ public class Main {
 				"0: Exit\n" +
 				"1: List all tweets\n" +
 				"2: Delete a tweet\n" +
-				"3: Add a new tweet\n" );
+				"3: Add a new tweet\n\n" );
 	}
 
     public static void main(String[] args) {
